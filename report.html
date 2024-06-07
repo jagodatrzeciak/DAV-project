@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweden COVID-19 Overview</title>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #BC8F8F;
+            color: #ffffff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: grey 3px solid;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        section {
+            padding: 20px;
+            background: #ffffff;
+            margin: 20px 0;
+        }
+        .charts img {
+            max-width: 100%;
+        }
+        footer {
+            background: #BC8F8F;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<script>
+    function startOrStop(option) {
+        image = document.getElementById(option);
+        if (image.src.toString().indexOf("png") != -1)
+            image.src = "plots/6_" + option + "_map.gif";
+        else
+            image.src = "plots/6_" + option + "_peak_static_map.png"
+    }
+</script>
+<header>
+    <div class="container">
+        <div id="branding">
+            <h1>Sweden COVID-19 Overview</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#summary">Summary</a></li>
+                <li><a href="#cases">Cases</a></li>
+                <li><a href="#deaths">Deaths</a></li>
+                <li><a href="#vaccinations">Vaccinations</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <section id="summary">
+        <h2>I. Overview</h2>
+        <p>This report provides a comprehensive analysis of COVID-19 pandemic in Sweden.</p>
+        <p>The data used in this analysis was sourced from <a style="text-decoration: none" href="https://github.com/owid/covid-19-data/blob/master/public/data/owid-covid-data.csv">Our World in Data</a> (country-level data) and from the <a style="text-decoration: none" href="https://www.folkhalsomyndigheten.se/the-public-health-agency-of-sweden/">Public Health Agency of Sweden</a> (regional-level data). Some data, such as the number of new cases was collected on a daily bases and some, like the number of vaccinated individuals was collected on a weekly basis. By combining both daily and weekly data, we aimed to create a detailed and accurate picture of the pandemic's trajectory in Sweden.</p>
+        <p>For most cases, we also compared obtained charts for Sweden with the charts obtained for Poland and other Scandinavian countries like Norway and Finland, which provides a deeper insight.</p>
+    </section>
+
+    <section id="cases">
+        <h2>II. Cases</h2>
+        <div class="charts">
+            <OBJECT data="plots/2_total_cases.html" height="500" width="700"></OBJECT>
+            <OBJECT data="plots/2_daily_cases.html" height="500" width="700"></OBJECT>
+            <OBJECT data="plots/2_daily_cases_sweden_vs_poland.html" height="500" width="700"></OBJECT>
+            <OBJECT data="plots/2_daily_cases_sweden_vs_scandinavian.html" height="500" width="700"></OBJECT>
+        </div>
+    </section>
+
+    <section id="deaths">
+        <h2>III. Deaths and ICU</h2>
+        <div class="charts">
+            <OBJECT data="plots/3_total_deaths.html" height="500" width="700"></OBJECT>
+            <OBJECT data="plots/3_daily_deaths.html" height="500" width="700"></OBJECT>
+            <OBJECT data="plots/3_icu_sweden.html" height="500" width="700"></OBJECT>
+            <OBJECT data="plots/3_hospital_sweden.html" height="500" width="700"></OBJECT>
+        </div>
+    </section>
+
+    <section id="tests">
+        <h2>IV. Tests</h2>
+        <div class="charts">
+            <OBJECT data="plots/4_total_tests.html" height="500" width="700"></OBJECT>
+            <OBJECT data="plots/4_daily_tests_sweden_vs_scandinavian.html" height="500" width="700"></OBJECT>
+        </div>
+    </section>
+
+    <section id="vaccinations">
+        <h2>V. Vaccinations</h2>
+        <div class="charts">
+            <OBJECT data="plots/5_total_vaccinations.html" height="500" width="700"></OBJECT>
+            <OBJECT data="plots/5_daily_vaccinations.html" height="500" width="700"></OBJECT>
+            <OBJECT data="plots/5_daily_vaccinations_sweden_vs_poland.html" height="500" width="700"></OBJECT>
+            <OBJECT data="plots/5_daily_vaccinations_sweden_vs_scandinavian.html" height="500" width="700"></OBJECT>
+        </div>
+    </section>
+
+    <section id="maps">
+        <h2>VI. Maps</h2>
+        <div class="charts">
+            <img src="plots/6_new_cases_peak_static_map.png" alt="New Cases Map"  width="400" id="new_cases" onclick="startOrStop('new_cases');"/>
+            <img src="plots/6_new_deaths_peak_static_map.png" alt="New Deaths Map"  width="400" id="new_deaths" onclick="startOrStop('new_deaths');"/>
+            <img src="plots/6_new_icu_peak_static_map.png" alt="New ICU Map"  width="400" id="new_icu" onclick="startOrStop('new_icu');"/>
+        </div>
+    </section>
+
+    <section id="predictions">
+        <h2>VII. Predictions</h2>
+        <div class="charts">
+            <img src="plots/7_cases_prediction_arima.png" alt="Cases Prediction ARIMA"  width="700" height="500"/>
+            <img src="plots/7_cases_prediction_hwes.png" alt="Cases Prediction HWES"  width="700" height="500"/>
+            <img src="plots/7_deaths_prediction_arima.png" alt="Deaths Prediction ARIMA"  width="700" height="500"/>
+            <img src="plots/7_deaths_prediction_hwes.png" alt="Deaths Prediction HWES"  width="700" height="500"/>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>Sweden COVID-19 Overview &copy; 2024</p>
+</footer>
+</body>
+</html>
