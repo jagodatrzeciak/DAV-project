@@ -9,8 +9,10 @@ fig.add_trace(go.Scatter(
     y=df_sweden['icu_patients'],
     mode='lines',
     line=dict(color='#882255'),
-    name='Sweden'
+    name='Sweden',
+    fill='tozeroy'
 ))
+
 fig.update_layout(
     title="ICU Patients due to COVID-19 in Sweden (2020-2024)",
     title_x=0.5,

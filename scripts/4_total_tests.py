@@ -9,7 +9,8 @@ fig.add_trace(go.Scatter(
     y=df_sweden['total_tests'],
     mode='lines',
     line=dict(color='#882255'),
-    name='Sweden'
+    name='Sweden',
+    fill='tozeroy'
 ))
 fig.update_layout(
     title="Total COVID-19 Tests in Sweden (2020-2024)",

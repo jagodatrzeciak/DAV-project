@@ -10,7 +10,8 @@ fig.add_trace(go.Scatter(
     y=vacc_sweden['people_vaccinated'],
     mode='lines',
     line=dict(color='#882255'),
-    name='Sweden'
+    name='Sweden',
+    fill='tozeroy'
 ))
 fig.update_layout(
     title="Total Number of Vaccinated People in Sweden (2020-2024)",
